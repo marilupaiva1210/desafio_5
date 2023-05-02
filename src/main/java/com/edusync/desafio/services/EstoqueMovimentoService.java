@@ -28,17 +28,15 @@ public class EstoqueMovimentoService {
             //se estiver entrando
         if (movimento.getTipoMovimento().equals("E")) {
 
-            //pego um produto           //pego sua quantia antiga       //somo com o atual
+            //pego um produto           //pego sua quantia antiga       //somo com a atual
             produto.setSaldoAtual(produto.getSaldoAtual() + movimento.getQuantidade());
             produtoService.update(produto.getCodigo(), produto);
         } else {
-            //pego um produto           //pego sua quantia antiga       //subtrair com o atual
+            //pego um produto           //pego sua quantia antiga       //subtraio com a atual
             produto.setSaldoAtual(produto.getSaldoAtual() - movimento.getQuantidade());
             produtoService.update(produto.getCodigo(), produto);
         }
-
         estoqueMovimentoRepository.save(movimento);
-
 }
 
     public List<EstoqueMovimento> listarMovimento() {
@@ -66,10 +64,10 @@ public class EstoqueMovimentoService {
             estoqueMovimentoRepository.deleteById(codigo);
         }
     }
+
     public List<EstoqueMovimento> listarMovimentoPorHistorico(Integer produtoId) {
 
         return estoqueRepositoryCustom.listarHistorico(produtoId);
-
     }
 }
 

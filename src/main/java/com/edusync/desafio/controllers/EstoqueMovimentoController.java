@@ -30,7 +30,9 @@ public class EstoqueMovimentoController {
     @Operation(summary = "Cadastra dos movimentos", description = "Faz o cadastro dos movimentos")
     @ApiResponse(responseCode = "200", description = "Sucesso!")
 
-    public ResponseEntity cadastrar(@RequestBody EstoqueMovimento movimento, @RequestParam Integer codigoProduto, @RequestParam Integer codigoFuncionario) {
+    public ResponseEntity cadastrar(@RequestBody EstoqueMovimento movimento,
+                                    @RequestParam Integer codigoProduto,
+                                    @RequestParam Integer codigoFuncionario) {
 
         Produto produto = produtoService.consultar(codigoProduto);
         movimento.setProduto(produto);
